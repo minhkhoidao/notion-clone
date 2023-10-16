@@ -6,8 +6,8 @@ import useScollTop from "@/hooks/useScollTop";
 import { cn } from "@/lib/utils";
 import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
-import Logo from "./Logo";
 import Link from "next/link";
+import Logo from "./Logo";
 
 const Navbar = (): JSX.Element => {
   const { isAuthenticated, isLoading } = useConvexAuth();

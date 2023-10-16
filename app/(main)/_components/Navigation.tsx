@@ -7,7 +7,7 @@ import { ElementRef, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 const Navigation = () => {
-  const isMobile = useMediaQuery("max-width:768px");
+  const isMobile = useMediaQuery("(max-width:768px)");
   const pathName = usePathname();
 
   const isResizingRef = useRef(false);
@@ -16,7 +16,6 @@ const Navigation = () => {
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
-  console.log(isMobile);
   return (
     <>
       <aside

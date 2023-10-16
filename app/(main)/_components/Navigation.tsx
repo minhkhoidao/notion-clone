@@ -2,11 +2,13 @@
 
 import { cn } from "@/lib/utils";
 import { ChevronsLeft, MenuIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 const Navigation = () => {
   const isMobile = useMediaQuery("(max-width:768px)");
+  const pathname = usePathname();
   const isResizingRef = useRef(false);
   const sideBarRef = useRef<HTMLDivElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -20,6 +22,12 @@ const Navigation = () => {
       resetWidth();
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    }
+  }, [pathname, isMobile]);
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>

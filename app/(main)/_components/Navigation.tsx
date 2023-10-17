@@ -16,9 +16,9 @@ import { useMutation, useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import Item from './Item';
 import { toast } from 'sonner';
+import DocumentList from './DocumentList';
 
 const Navigation = (): React.ReactElement => {
-  const documents = useQuery(api.documents.get);
   const create = useMutation(api.documents.create);
   const isMobile = useMediaQuery('(max-width:768px)');
   const pathname = usePathname();
@@ -138,9 +138,7 @@ const Navigation = (): React.ReactElement => {
           <Item onClick={handleCreate} label='New page' icon={PlusCircle} />
         </div>
         <div className='mt-4'>
-          {documents?.map((document) => {
-            return <p key={document._id}>{document.title}</p>;
-          })}
+          <DocumentList />
         </div>
         <div
           onMouseDown={handleMouseDown}

@@ -18,17 +18,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
         <ConvexClientProvider>
           <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
+            attribute='class'
+            defaultTheme='system'
             enableSystem
-            storageKey="jotion-theme-2"
+            storageKey='jotion-theme-2'
             disableTransitionOnChange
           >
-            <Toaster position="bottom-center" />
+            <Toaster position='bottom-center' />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>

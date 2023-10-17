@@ -9,7 +9,7 @@ import { useConvexAuth } from 'convex/react';
 import Link from 'next/link';
 import Logo from './Logo';
 
-const Navbar = (): JSX.Element => {
+const Navbar = (): React.ReactElement => {
   const { isAuthenticated, isLoading } = useConvexAuth();
   const scroll = useScollTop();
   return (

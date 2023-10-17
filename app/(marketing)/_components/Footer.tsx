@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 
-const Footer = (): JSX.Element => {
+const Footer = (): React.ReactElement => {
   return (
     <div className='flex items-center w-full p-6 bg-background z-50 dark:bg-[#1f1f1f]'>
       <Logo />

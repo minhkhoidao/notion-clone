@@ -8,7 +8,7 @@ const font = Poppins({
   weight: ['400', '600'],
 });
 
-const Logo = (): JSX.Element => {
+const Logo = (): React.ReactElement => {
   return (
     <div className='hidden md:flex items-center gap-x-2'>
       <Image

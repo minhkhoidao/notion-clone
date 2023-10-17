@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const Heroes = (): JSX.Element => {
+const Heroes = (): React.ReactElement => {
   return (
     <div className='flex flex-col items-center justify-center max-w-5xl'>
       <div className='flex items-center'>

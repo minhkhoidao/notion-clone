@@ -1,13 +1,13 @@
-"use client";
-import { ModeToggle } from "@/components/mode-toggle";
-import Spinner from "@/components/spinner";
-import { Button } from "@/components/ui/button";
-import useScollTop from "@/hooks/useScollTop";
-import { cn } from "@/lib/utils";
-import { SignInButton, UserButton } from "@clerk/clerk-react";
-import { useConvexAuth } from "convex/react";
-import Link from "next/link";
-import Logo from "./Logo";
+'use client';
+import { ModeToggle } from '@/components/mode-toggle';
+import Spinner from '@/components/spinner';
+import { Button } from '@/components/ui/button';
+import useScollTop from '@/hooks/useScollTop';
+import { cn } from '@/lib/utils';
+import { SignInButton, UserButton } from '@clerk/clerk-react';
+import { useConvexAuth } from 'convex/react';
+import Link from 'next/link';
+import Logo from './Logo';
 
 const Navbar = (): JSX.Element => {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -15,8 +15,8 @@ const Navbar = (): JSX.Element => {
   return (
     <div
       className={cn(
-        "z-50 bg-background dark:bg-[#1f1f1f] fixed top-0 flex items-center w-full p-6",
-        scroll && "border-b shadow-sm",
+        'z-50 bg-background dark:bg-[#1f1f1f] fixed top-0 flex items-center w-full p-6',
+        scroll && 'border-b shadow-sm',
       )}
     >
       <Logo />
@@ -25,7 +25,7 @@ const Navbar = (): JSX.Element => {
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode='modal'>
-              <Button variant={"ghost"} size='sm'>
+              <Button variant={'ghost'} size='sm'>
                 Login
               </Button>
             </SignInButton>
@@ -36,7 +36,7 @@ const Navbar = (): JSX.Element => {
         )}
         {isAuthenticated && !isLoading && (
           <>
-            <Button variant={"ghost"} size={"sm"} asChild>
+            <Button variant={'ghost'} size={'sm'} asChild>
               <Link href='/documents'>Enter Jotion</Link>
             </Button>
             <UserButton afterSignOutUrl='/' />

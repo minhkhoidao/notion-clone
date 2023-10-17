@@ -1,12 +1,12 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { api } from "@/convex/_generated/api";
-import { useUser } from "@clerk/clerk-react";
-import { useMutation } from "convex/react";
-import { PlusCircle } from "lucide-react";
-import Image from "next/image";
-import React from "react";
-import { toast } from "sonner";
+'use client';
+import { Button } from '@/components/ui/button';
+import { api } from '@/convex/_generated/api';
+import { useUser } from '@clerk/clerk-react';
+import { useMutation } from 'convex/react';
+import { PlusCircle } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
+import { toast } from 'sonner';
 
 const DocumentsPage = () => {
   const { user } = useUser();
@@ -14,26 +14,26 @@ const DocumentsPage = () => {
 
   const onCreate = () => {
     const promise = create({
-      title: "Untitled",
+      title: 'Untitled',
     });
     toast.promise(promise, {
-      loading: "Creating a new note...",
-      success: "New note created!",
-      error: "Failed to create new note",
+      loading: 'Creating a new note...',
+      success: 'New note created!',
+      error: 'Failed to create new note',
     });
   };
 
   return (
     <div className='h-full flex flex-col items-center justify-center space-y-4'>
       <Image
-        src={"/empty.png"}
+        src={'/empty.png'}
         height={300}
         width={300}
         alt='empty'
         className='dark:hidden'
       />
       <Image
-        src={"/empty-dark.png"}
+        src={'/empty-dark.png'}
         height={300}
         width={300}
         alt='empty'

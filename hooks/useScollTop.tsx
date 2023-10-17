@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 /**
  * A custom hook that returns a boolean indicating whether the user has scrolled past a certain threshold.
  * @param threshold - The threshold value for the scroll position. Default is 10.
@@ -15,10 +15,10 @@ const useScollTop = (threshold = 10) => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [threshold]);
   return scroll;

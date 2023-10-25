@@ -26,6 +26,7 @@ import Item from './Item';
 import TrashBox from './TrashBox';
 import UserItems from './UserItems';
 import { useSearch } from '@/hooks/useSearch';
+import { useSettings } from '@/hooks/useSetting';
 
 const Navigation = (): React.ReactElement => {
   const create = useMutation(api.documents.create);
@@ -37,6 +38,7 @@ const Navigation = (): React.ReactElement => {
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
   const search = useSearch();
+  const settings = useSettings();
   useEffect(() => {
     if (isMobile) {
       collapse();
@@ -143,7 +145,7 @@ const Navigation = (): React.ReactElement => {
         <div>
           <UserItems />
           <Item label='Search' icon={Search} isSearch onClick={search.onOpen} />
-          <Item label='Setting' icon={Settings} onClick={() => {}} />
+          <Item label='Setting' icon={Settings} onClick={settings.onOpen} />
           <Item onClick={handleCreate} label='New page' icon={PlusCircle} />
         </div>
         <div className='mt-4'>

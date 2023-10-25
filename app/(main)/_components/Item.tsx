@@ -95,7 +95,7 @@ const Item: ItemComponent = ({
     >
       {!!id && (
         <div
-          className='h-full rounded-sm hover:bg-neutral-300 dark:bg-neutral-600 mr-1'
+          className='h-full rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 mr-1'
           role='button'
           onClick={handleExpand}
         >

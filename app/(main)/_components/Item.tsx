@@ -22,12 +22,12 @@ import {
   Trash,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { FC, memo } from 'react';
+import { FC } from 'react';
 import { toast } from 'sonner';
 
 interface ItemProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   icon: LucideIcon;
   id?: Id<'documents'>;
   documentsIcon?: string;

@@ -1,6 +1,13 @@
 'use client';
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { api } from '@/convex/_generated/api';
 import { cn } from '@/lib/utils';
+import { useMutation } from 'convex/react';
 import {
   ChevronsLeft,
   MenuIcon,
@@ -12,19 +19,12 @@ import {
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { useMediaQuery } from 'usehooks-ts';
-import UserItems from './UserItems';
-import { useMutation, useQuery } from 'convex/react';
-import { api } from '@/convex/_generated/api';
-import Item from './Item';
 import { toast } from 'sonner';
+import { useMediaQuery } from 'usehooks-ts';
 import DocumentList from './DocumentList';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import Item from './Item';
 import TrashBox from './TrashBox';
+import UserItems from './UserItems';
 
 const Navigation = (): React.ReactElement => {
   const create = useMutation(api.documents.create);

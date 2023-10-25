@@ -2,7 +2,7 @@
 import { useUser } from '@clerk/clerk-react';
 import { File } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useQuery } from 'convex/react';
 import { useSearch } from '@/hooks/useSearch';
 import { api } from '@/convex/_generated/api';
@@ -15,7 +15,7 @@ import {
 } from './ui/command';
 import { CommandEmpty } from 'cmdk';
 
-const SearchCommand = () => {
+const SearchCommand = (): ReactElement => {
   const { user } = useUser();
   const router = useRouter();
   const documents = useQuery(api.documents.getSearch);
@@ -45,7 +45,9 @@ const SearchCommand = () => {
     onClose();
   };
 
-  if (!isMounted) return null;
+  if (!isMounted) {
+    return <></>;
+  }
 
   return (
     <CommandDialog open={isOpen} onOpenChange={onClose}>

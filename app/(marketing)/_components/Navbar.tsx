@@ -1,5 +1,5 @@
 'use client';
-import { ModeToggle } from '@/components/mode-toggle';
+import { ModeToggle } from '@/components/model-toggle';
 import Spinner from '@/components/spinner';
 import { Button } from '@/components/ui/button';
 import useScollTop from '@/hooks/useScollTop';

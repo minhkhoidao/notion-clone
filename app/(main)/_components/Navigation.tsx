@@ -25,6 +25,7 @@ import DocumentList from './DocumentList';
 import Item from './Item';
 import TrashBox from './TrashBox';
 import UserItems from './UserItems';
+import { useSearch } from '@/hooks/useSearch';
 
 const Navigation = (): React.ReactElement => {
   const create = useMutation(api.documents.create);
@@ -35,7 +36,7 @@ const Navigation = (): React.ReactElement => {
   const navbarRef = useRef<HTMLDivElement>(null);
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
-
+  const search = useSearch();
   useEffect(() => {
     if (isMobile) {
       collapse();
@@ -141,7 +142,7 @@ const Navigation = (): React.ReactElement => {
         </div>
         <div>
           <UserItems />
-          <Item label='Search' icon={Search} isSearch onClick={() => {}} />
+          <Item label='Search' icon={Search} isSearch onClick={search.onOpen} />
           <Item label='Setting' icon={Settings} onClick={() => {}} />
           <Item onClick={handleCreate} label='New page' icon={PlusCircle} />
         </div>

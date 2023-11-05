@@ -12,7 +12,10 @@ const Heading = (): React.ReactElement => {
   const { isAuthenticated, isLoading } = useConvexAuth();
   return (
     <div className='max-w-3xl space-y-4'>
-      <h1 className='text-3xl sm:text-5xl md:text-6xl font-bold'>
+      <h1
+        data-test='heading-test'
+        className='text-3xl sm:text-5xl md:text-6xl font-bold'
+      >
         Your Ideas, Documents, & Plants. Unified. Welcome to{' '}
         <span className='underline'>Jotion</span>
       </h1>

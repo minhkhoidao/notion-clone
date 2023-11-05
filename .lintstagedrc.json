@@ -1,4 +1,9 @@
 {
-  "*.{js,jsx,ts,tsx}": ["eslint --fix", "npx prettier . --write", "eslint"],
+  "*.{js,jsx,ts,tsx}": [
+    "eslint --fix",
+    "npx prettier . --write",
+    "eslint",
+    "yarn test"
+  ],
   "*.json": ["npx prettier . --write"]
 }

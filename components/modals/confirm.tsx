@@ -1,10 +1,10 @@
 'use client';
 import {
-  FC,
+  type FC,
   MouseEvent,
-  MouseEventHandler,
-  ReactElement,
-  ReactNode,
+  type MouseEventHandler,
+  type ReactElement,
+  type ReactNode,
 } from 'react';
 import {
   AlertDialog,
@@ -18,10 +18,10 @@ import {
   AlertDialogTrigger,
 } from '../ui/alert-dialog';
 
-interface ConfirmModalProps {
+type ConfirmModalProps = {
   children: ReactNode;
   onConfirm: () => void;
-}
+};
 
 const ConfirmModal: FC<ConfirmModalProps> = ({
   children,
@@ -31,9 +31,15 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
     event.stopPropagation();
     onConfirm();
   };
+
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild onClick={(e) => e.stopPropagation()}>
+      <AlertDialogTrigger
+        asChild
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         {children}
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -45,7 +51,11 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
+            <AlertDialogCancel
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction onClick={handleConfirm}>

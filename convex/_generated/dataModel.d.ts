@@ -9,10 +9,10 @@
  * @module
  */
 
-import type { DataModelFromSchemaDefinition } from "convex/server";
-import type { DocumentByName, TableNamesInDataModel } from "convex/server";
-import type { GenericId } from "convex/values";
-import schema from "../schema";
+import type { DataModelFromSchemaDefinition } from 'convex/server';
+import type { DocumentByName, TableNamesInDataModel } from 'convex/server';
+import type { GenericId } from 'convex/values';
+import schema from '../schema';
 
 /**
  * The names of all of your Convex tables.

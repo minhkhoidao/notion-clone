@@ -1,19 +1,19 @@
 'use client';
 
 import { api } from '@/convex/_generated/api';
-import { Doc, Id } from '@/convex/_generated/dataModel';
+import { type Doc, type Id } from '@/convex/_generated/dataModel';
 import { useQuery } from 'convex/react';
 import { useParams, useRouter } from 'next/navigation';
-import React, { FC, useState } from 'react';
+import React, { type FC, useState } from 'react';
 import Item from './Item';
 import { cn } from '@/lib/utils';
 import { FileIcon } from 'lucide-react';
 
-interface DocumentListProps {
+type DocumentListProps = {
   parentDocumentId?: Id<'documents'>;
   level?: number;
-  data?: Doc<'documents'>[];
-}
+  data?: Array<Doc<'documents'>>;
+};
 
 const DocumentList: FC<DocumentListProps> = ({
   parentDocumentId,
@@ -63,26 +63,28 @@ const DocumentList: FC<DocumentListProps> = ({
       >
         No pages inside
       </p>
-      {documents.map((document) => {
-        return (
-          <div key={document._id}>
-            <Item
-              id={document._id}
-              onClick={() => onRedirect(document._id)}
-              label={document.title}
-              icon={FileIcon}
-              documentsIcon={document.icon}
-              active={params.documentId === document._id}
-              level={level}
-              onExpand={() => onExpand(document._id)}
-              expanded={expanded[document._id]}
-            />
-            {expanded[document._id] && (
-              <DocumentList parentDocumentId={document._id} level={level + 1} />
-            )}
-          </div>
-        );
-      })}
+      {documents.map((document) => (
+        <div key={document._id}>
+          <Item
+            id={document._id}
+            onClick={() => {
+              onRedirect(document._id);
+            }}
+            label={document.title}
+            icon={FileIcon}
+            documentsIcon={document.icon}
+            active={params.documentId === document._id}
+            level={level}
+            onExpand={() => {
+              onExpand(document._id);
+            }}
+            expanded={expanded[document._id]}
+          />
+          {expanded[document._id] && (
+            <DocumentList parentDocumentId={document._id} level={level + 1} />
+          )}
+        </div>
+      ))}
     </>
   );
 };

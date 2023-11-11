@@ -4,17 +4,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { api } from '@/convex/_generated/api';
-import { Doc } from '@/convex/_generated/dataModel';
+import { type Doc } from '@/convex/_generated/dataModel';
 import { useMutation } from 'convex/react';
-import { FC, ReactElement, useRef, useState } from 'react';
+import { FC, type ReactElement, useRef, useState } from 'react';
 
-interface TitleProps {
+type TitleProps = {
   initialData: Doc<'documents'>;
-}
+};
 
-interface TitleComponent extends React.FC<TitleProps> {
+type TitleComponent = {
   Skeleton: React.FC;
-}
+} & React.FC<TitleProps>;
 const Title: TitleComponent = ({ initialData }): ReactElement => {
   const update = useMutation(api.documents.update);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,7 +50,7 @@ const Title: TitleComponent = ({ initialData }): ReactElement => {
 
   return (
     <div className='flex items-center gap-x-1'>
-      {!!initialData.icon && <p>{initialData.icon}</p>}
+      {Boolean(initialData.icon) && <p>{initialData.icon}</p>}
       {isEditing ? (
         <Input
           ref={inputRef}
@@ -75,9 +75,9 @@ const Title: TitleComponent = ({ initialData }): ReactElement => {
   );
 };
 
-const TitleSkeleton = (): ReactElement => {
-  return <Skeleton className='h-6 w-20 rounded-md' />;
-};
+const TitleSkeleton = (): ReactElement => (
+  <Skeleton className='h-6 w-20 rounded-md' />
+);
 
 Title.Skeleton = TitleSkeleton;
 export default Title;

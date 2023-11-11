@@ -17,12 +17,11 @@ const spinnerVariant = cva('text-muted-foreground animate-spin', {
   },
 });
 
-interface SpinnerProps extends VariantProps<typeof spinnerVariant> {}
+type SpinnerProps = Record<string, unknown> &
+  VariantProps<typeof spinnerVariant>;
 
-const Spinner = ({ size }: SpinnerProps): React.ReactElement => {
-  return (
-    <Loader data-test='spinner' className={cn(spinnerVariant({ size }))} />
-  );
-};
+const Spinner = ({ size }: SpinnerProps): React.ReactElement => (
+  <Loader data-test='spinner' className={cn(spinnerVariant({ size }))} />
+);
 
 export default Spinner;

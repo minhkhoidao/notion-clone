@@ -1,16 +1,16 @@
 'use client';
 import { api } from '@/convex/_generated/api';
-import { Id } from '@/convex/_generated/dataModel';
+import { type Id } from '@/convex/_generated/dataModel';
 import { useQuery } from 'convex/react';
 import { MenuIcon } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { FC, ReactElement } from 'react';
+import { type FC, type ReactElement } from 'react';
 import Title from './Title';
 
-interface NavbarProps {
+type NavbarProps = {
   isCollapsed: boolean;
   onResetWitdh: () => void;
-}
+};
 
 const Navbar: FC<NavbarProps> = ({
   isCollapsed,
@@ -23,6 +23,7 @@ const Navbar: FC<NavbarProps> = ({
   } else {
     cleanedDocumentId = documentId.replace('%7D', '');
   }
+
   const document = useQuery(api.documents.getById, {
     documentId: cleanedDocumentId as Id<'documents'>,
   });
@@ -33,9 +34,11 @@ const Navbar: FC<NavbarProps> = ({
       </nav>
     );
   }
+
   if (document === null) {
     return <></>;
   }
+
   return (
     <>
       <nav className='bg-background dark:bg-[#f1f1f] px-3 py-2 w-full flex items-center gap-x-4'>

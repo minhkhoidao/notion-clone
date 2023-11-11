@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useEffect, useState } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 import SettingsModal from '../modals/settings';
 
 const ModalProvider = (): ReactElement => {
@@ -13,6 +13,7 @@ const ModalProvider = (): ReactElement => {
   if (!isMounted) {
     return <></>;
   }
+
   return (
     <>
       <SettingsModal />

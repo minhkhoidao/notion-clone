@@ -13,12 +13,10 @@ export const ConvexClientProvider = ({
   children,
 }: {
   children: React.ReactNode;
-}) => {
-  return (
-    <ClerkProvider {...clerkOptions}>
-      <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
-        {children}
-      </ConvexProviderWithClerk>
-    </ClerkProvider>
-  );
-};
+}) => (
+  <ClerkProvider {...clerkOptions}>
+    <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
+      {children}
+    </ConvexProviderWithClerk>
+  </ClerkProvider>
+);

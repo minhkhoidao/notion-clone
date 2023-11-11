@@ -73,7 +73,6 @@ To learn more about Next.js, take a look at the following resources:
 - [Clerk Documentation](https://clerk.com/docs) - learn about Clerk features and API.
 - [Zustand Documentation](https://docs.pmnd.rs/zustand/getting-started/introduction) - learn about Zustand features and API.
 
-
 <!-- ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

@@ -2,7 +2,7 @@ import ConfirmModal from '@/components/modals/confirm';
 import Spinner from '@/components/spinner';
 import { Input } from '@/components/ui/input';
 import { api } from '@/convex/_generated/api';
-import { Id } from '@/convex/_generated/dataModel';
+import { type Id } from '@/convex/_generated/dataModel';
 import { useMutation, useQuery } from 'convex/react';
 import { Search, Trash, Undo } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
@@ -18,16 +18,16 @@ const TrashBox = () => {
 
   const [search, setSearch] = useState('');
 
-  const filterDocuments = document?.filter((doc) => {
-    return doc.title.toLowerCase().includes(search.toLowerCase());
-  });
+  const filterDocuments = document?.filter((doc) =>
+    doc.title.toLowerCase().includes(search.toLowerCase()),
+  );
 
   const onClick = (documentId: string) => {
     router.push(`/documents/${documentId}`);
   };
 
   const onRestore = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement>,
     documentId: Id<'documents'>,
   ) => {
     event.stopPropagation();
@@ -40,7 +40,7 @@ const TrashBox = () => {
   };
 
   const onRemove = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement>,
     documentId: Id<'documents'>,
   ) => {
     event?.stopPropagation();
@@ -87,19 +87,27 @@ const TrashBox = () => {
           <div
             key={doc._id}
             role='button'
-            onClick={() => onClick(doc._id)}
+            onClick={() => {
+              onClick(doc._id);
+            }}
             className='text-sm rounded-sm w-full hover:bg-primary/5 flex items-center text-primary justify-between'
           >
             <span className='truncate pl-2'>{doc.title}</span>
             <div className='flex items-center'>
               <div
                 className='rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600'
-                onClick={(e: any) => onRestore(e, doc._id)}
+                onClick={(e: any) => {
+                  onRestore(e, doc._id);
+                }}
                 role='button'
               >
                 <Undo className='h-4 w-4 text-muted-foreground' />
               </div>
-              <ConfirmModal onConfirm={(e?: any) => onRemove(e, doc._id)}>
+              <ConfirmModal
+                onConfirm={(e?: any) => {
+                  onRemove(e, doc._id);
+                }}
+              >
                 <div
                   className='rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600'
                   role='button'

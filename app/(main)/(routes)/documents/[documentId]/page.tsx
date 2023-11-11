@@ -1,7 +1,5 @@
 import React from 'react';
 
-const DocumentsIdPage = () => {
-  return <div></div>;
-};
+const DocumentsIdPage = () => <div></div>;
 
 export default DocumentsIdPage;

@@ -3,7 +3,7 @@ import { useSettings } from '@/hooks/useSetting';
 import { ModeToggle } from '../model-toggle';
 import { Dialog, DialogContent, DialogHeader } from '../ui/dialog';
 import { Label } from '../ui/label';
-import { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 
 const SettingsModal = (): ReactElement => {
   const { onClose, isOpen } = useSettings();

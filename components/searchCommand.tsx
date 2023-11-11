@@ -2,7 +2,7 @@
 import { useUser } from '@clerk/clerk-react';
 import { File } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { ReactElement, useEffect, useState } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 import { useQuery } from 'convex/react';
 import { useSearch } from '@/hooks/useSearch';
 import { api } from '@/convex/_generated/api';
@@ -36,8 +36,11 @@ const SearchCommand = (): ReactElement => {
         toggle();
       }
     };
+
     window.addEventListener('keydown', down);
-    return () => window.removeEventListener('keydown', down);
+    return () => {
+      window.removeEventListener('keydown', down);
+    };
   }, [toggle]);
 
   const onSelect = (id: string) => {
@@ -55,21 +58,27 @@ const SearchCommand = (): ReactElement => {
       <CommandList>
         <CommandEmpty>No results found</CommandEmpty>
         <CommandGroup heading='Documents'>
-          {documents?.map((document) => (
-            <CommandItem
-              key={document._id}
-              value={`${document._id}-${document.title}`}
-              title={document.title}
-              onSelect={() => onSelect(document._id)}
-            >
-              {document.icon ? (
-                <p className='mr-2 text-[18px]'>{document.icon}</p>
-              ) : (
-                <File mr-2 h-4 w-4 />
-              )}
-              <span>{document.title}</span>
-            </CommandItem>
-          ))}
+          {documents?.map((document) => {
+            console.log(document);
+            return (
+              <CommandItem
+                key={document._id}
+                value={`${document._id}-${document.title}`}
+                title={document.title}
+                onSelect={() => {
+                  onSelect(document._id);
+                }}
+                data-test={`command-item-${document._id}`}
+              >
+                {document.icon ? (
+                  <p className='mr-2 text-[18px]'>{document.icon}</p>
+                ) : (
+                  <File mr-2 h-4 w-4 />
+                )}
+                <span>{document.title}</span>
+              </CommandItem>
+            );
+          })}
         </CommandGroup>
       </CommandList>
     </CommandDialog>

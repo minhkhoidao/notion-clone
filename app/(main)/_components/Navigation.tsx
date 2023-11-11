@@ -41,6 +41,7 @@ const Navigation = (): React.ReactElement => {
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
   const search = useSearch();
   const settings = useSettings();
+
   useEffect(() => {
     if (isMobile) {
       collapse();
@@ -55,9 +56,7 @@ const Navigation = (): React.ReactElement => {
     }
   }, [pathname, isMobile]);
 
-  const handleMouseDown = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
+  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.stopPropagation();
     isResizingRef.current = true;
@@ -66,10 +65,19 @@ const Navigation = (): React.ReactElement => {
   };
 
   const handleMouseMove = (event: MouseEvent) => {
-    if (!isResizingRef.current) return;
+    if (!isResizingRef.current) {
+      return;
+    }
+
     let newWidth = event.clientX;
-    if (newWidth < 240) newWidth = 240;
-    if (newWidth > 480) newWidth = 480;
+    if (newWidth < 240) {
+      newWidth = 240;
+    }
+
+    if (newWidth > 480) {
+      newWidth = 480;
+    }
+
     if (sideBarRef.current && navbarRef.current) {
       sideBarRef.current.style.width = `${newWidth}px`;
       navbarRef.current.style.setProperty('left', `${newWidth}px`);
@@ -97,7 +105,9 @@ const Navigation = (): React.ReactElement => {
         isMobile ? '0' : 'calc(100% - 240px',
       );
       navbarRef.current.style.setProperty('left', isMobile ? '100%' : '240px');
-      setTimeout(() => setIsResetting(false), 300);
+      setTimeout(() => {
+        setIsResetting(false);
+      }, 300);
     }
   };
 
@@ -110,7 +120,9 @@ const Navigation = (): React.ReactElement => {
       navbarRef.current.style.setProperty('width', '100%');
       navbarRef.current.style.setProperty('left', '0');
 
-      setTimeout(() => setIsResetting(false), 300);
+      setTimeout(() => {
+        setIsResetting(false);
+      }, 300);
     }
   };
 
@@ -124,6 +136,7 @@ const Navigation = (): React.ReactElement => {
       error: 'Error creating note',
     });
   };
+
   return (
     <>
       <aside
@@ -169,7 +182,7 @@ const Navigation = (): React.ReactElement => {
           isMobile && 'left-0 w-full',
         )}
       >
-        {!!params.documentId ? (
+        {params.documentId ? (
           <Navbar isCollapsed={isCollapsed} onResetWitdh={resetWidth} />
         ) : (
           <nav className='bg-transparent px-3 py-2 w-full'>

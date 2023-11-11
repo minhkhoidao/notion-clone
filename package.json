@@ -11,8 +11,7 @@
     "prepare": "husky install",
     "format": "npx prettier . --write",
     "lint-staged": "npx lint-staged",
-    "cypress:open": "cypress open",
-    "test": "npx cypress run"
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.26.4",
